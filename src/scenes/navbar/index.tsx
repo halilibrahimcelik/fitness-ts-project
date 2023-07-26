@@ -9,15 +9,21 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 type Props = {
   selectedPage: SelectedPage;
   setSelectedPage: (page: SelectedPage) => void;
+  isTopOffPage: boolean;
 };
 
-const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
+const Navbar = ({ selectedPage, setSelectedPage, isTopOffPage }: Props) => {
   const [isMenuToggled, setMenuToggled] = useState<boolean>(false);
   const flexBetween: string = "flex justify-between items-center";
   const isAboveMediumScreen = useMediaQuery("(min-width:1060px)");
+
   return (
     <nav>
-      <div className={`${flexBetween} fixed top-0 z-30 w-full py-6 `}>
+      <div
+        className={`${flexBetween} fixed top-0 z-30 w-full py-6  duration-300  ease-in drop-shadow  ${
+          !isTopOffPage ? "bg-primary-100" : "bg-transparent"
+        }`}
+      >
         <div className={`${flexBetween} mx-auto w-5/6 `}>
           <div className={`${flexBetween} gap-10 w-full `}>
             <img src={Logo} alt="logo" className="w-24" />
