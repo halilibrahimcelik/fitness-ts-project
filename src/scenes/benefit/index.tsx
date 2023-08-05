@@ -16,7 +16,11 @@ type Props = {
 
 const Benefit = ({ setSelectedPage }: Props) => {
   return (
-    <motion.section className="py-[80px] benefit mx-auto font-dmsans w-5/6">
+    <motion.section
+      id="benefits"
+      onViewportEnter={() => setSelectedPage(SelectedPage.Benefits)}
+      className="py-[80px] benefit mx-auto font-dmsans w-5/6"
+    >
       <div className="py-6">
         <h2 className="uppercase font-extrabold  py-5 text-4xl">
           More Than just a gym
