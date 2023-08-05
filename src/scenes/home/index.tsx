@@ -27,7 +27,7 @@ const Home = ({ setSelectedPage }: Props) => {
   const logos: string[] = [redbull, forbes, furtune, redbull, forbes, furtune];
 
   return (
-    <section className="pt-[200px]  relative overflow-hidden  ">
+    <section className="pt-[200px]  bg-gray-20 relative overflow-hidden  ">
       <motion.div
         onViewportEnter={() => setSelectedPage(SelectedPage.Home)}
         animate={{ x: 0 }}

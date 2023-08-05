@@ -36,7 +36,7 @@ const Card = ({ setSelectedPage, text, icon, delay }: Props) => {
       animate={controls}
       variants={variants}
       transition={{ delay: delay * 0.1, duration: 0.4, ease: "easeOut" }}
-      className="border-2 border-gray-400-200 p-6 gap-4 duration-200 hover:scale-105  flex flex-col items-center justify-center  w-full h-[200px]  md:h-[400px] md:w-[300px] rounded-md"
+      className="border-2 border-gray-400-200 p-6 gap-4 duration-200 hover:scale-105  flex flex-col items-center justify-center  w-full h-[250px]  md:h-[400px] md:w-[300px] rounded-md"
     >
       <div className="w-50 h-50 rounded-full p-4 bg-primary-100 text-primary-500 text-3xl">
         {icon}
