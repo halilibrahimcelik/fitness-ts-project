@@ -1,18 +1,45 @@
 import { SelectedPage } from "@/shared/types";
 import React from "react";
 import homepage from "@/assets/HomePageGraphic.png";
+import redbull from "@/assets/SponsorRedBull.png";
+import furtune from "@/assets/SponsorFortune.png";
+import forbes from "@/assets/SponsorForbes.png";
+
 import evolveText from "@/assets/EvolveText.png";
 import AnchorLink from "react-anchor-link-smooth-scroll";
+import { motion } from "framer-motion";
+import SwiperCore from "swiper";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
+
+SwiperCore.use([Navigation, Pagination, Autoplay]);
+
 type Props = {
   setSelectedPage: (props: SelectedPage) => void;
 };
 
 const Home = ({ setSelectedPage }: Props) => {
+  const logos: string[] = [redbull, forbes, furtune, redbull, forbes, furtune];
+
   return (
     <section className="pt-[200px]  relative ">
-      <div className="absolute hidden md:block left-10 top-[10rem] w-[50%]">
+      <motion.div
+        animate={{ x: 0 }}
+        transition={{
+          duration: 0.5,
+          ease: "easeOut",
+          delay: 0.5,
+        }}
+        initial={{ x: -500 }}
+        className="absolute hidden md:block left-10 top-[10rem] w-[50%]"
+      >
         <img src={evolveText} alt="evolve-text absolute z-[-1]" />
-      </div>
+      </motion.div>
 
       <div className="flex  flex-col md:flex-row mx-auto justify-between items-start w-5/6 j relative z-1">
         <div className=" flex flex-col gap-2">
@@ -46,6 +73,32 @@ const Home = ({ setSelectedPage }: Props) => {
         </div>
         <div className=" self-center  md:self-stretch">
           <img src={homepage} alt="homepage" />
+        </div>
+      </div>
+
+      <div>
+        <div className="hidden md:flex justify-around ">
+          <Swiper
+            spaceBetween={10}
+            slidesPerView={3}
+            loop={true}
+            autoplay={{ delay: 1000 }}
+          >
+            {logos.map((logo, index) => {
+              return (
+                <SwiperSlide
+                  key={index}
+                  className="flex justify-center items-center"
+                >
+                  <img
+                    src={logo}
+                    alt="logo"
+                    className="w-[200px] h-[200px] object-contain"
+                  />
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
         </div>
       </div>
     </section>
