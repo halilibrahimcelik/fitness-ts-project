@@ -6,6 +6,7 @@ import useMediaQuery from "@/hooks/useMediaQuery";
 import { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import AnchorLink from "react-anchor-link-smooth-scroll";
+import { motion } from "framer-motion";
 type Props = {
   selectedPage: SelectedPage;
   setSelectedPage: (page: SelectedPage) => void;
@@ -18,7 +19,11 @@ const Navbar = ({ selectedPage, setSelectedPage, isTopOffPage }: Props) => {
   const isAboveMediumScreen = useMediaQuery("(min-width:1060px)");
 
   return (
-    <nav>
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5, delay: 0.5 }}
+    >
       <div
         className={`${flexBetween} fixed top-0 z-30 w-full py-6  duration-300  ease-in drop-shadow  ${
           !isTopOffPage ? "bg-primary-100" : "bg-transparent"
@@ -119,7 +124,7 @@ const Navbar = ({ selectedPage, setSelectedPage, isTopOffPage }: Props) => {
           </div>
         </>
       )}
-    </nav>
+    </motion.nav>
   );
 };
 

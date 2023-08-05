@@ -27,8 +27,9 @@ const Home = ({ setSelectedPage }: Props) => {
   const logos: string[] = [redbull, forbes, furtune, redbull, forbes, furtune];
 
   return (
-    <section className="pt-[200px]  relative overflow-hidden ">
+    <section className="pt-[200px]  relative overflow-hidden  ">
       <motion.div
+        onViewportEnter={() => setSelectedPage(SelectedPage.Home)}
         animate={{ x: 0 }}
         transition={{
           duration: 0.5,
@@ -45,7 +46,7 @@ const Home = ({ setSelectedPage }: Props) => {
         initial={{ opacity: 0, d: "none" }}
         animate={{ d: "block", opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.5 }}
-        className="flex  flex-col md:flex-row mx-auto justify-between items-start w-5/6 j relative z-1"
+        className="flex  flex-col md:flex-row mx-auto justify-between items-start w-5/6  relative z-1"
       >
         <div className=" flex flex-col gap-2">
           <h1 className="text-[5rem] font-montserrat  font-extrabold  text-primary-400">
@@ -77,11 +78,21 @@ const Home = ({ setSelectedPage }: Props) => {
           </div>
         </div>
         <motion.div
-          initial={{ opacity: 0, translateX: 700, d: "none" }}
-          animate={{ opacity: 1, translateX: 0, d: "block" }}
+          initial={{
+            opacity: 0,
+            translateX: 200,
+            d: "none",
+            overflow: "hidden",
+          }}
+          animate={{
+            opacity: 1,
+            translateX: 0,
+            d: "block",
+            overflow: "hidden",
+          }}
           viewport={{ once: false, amount: 0.5 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className=" self-center  md:self-stretch"
+          className=" self-center  md:self-stretch overflow-hidden"
         >
           <img src={homepage} alt="homepage" />
         </motion.div>
